@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ===== SEO / social ==================================================
+       Update the URL and og:image once the site is deployed. -->
+  <title>Ibrahim Mustafa Opu — Programmer</title>
+  <meta name="description" content="Self-taught programmer in Toronto. I build things to find out how they work — including my own programming language.">
+  <meta name="author" content="Ibrahim Mustafa Opu">
+  <link rel="canonical" href="https://ibrahimmustafaopu.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ibrahim Mustafa Opu — Programmer">
+  <meta property="og:description" content="Self-taught programmer in Toronto. I build things to find out how they work.">
+  <meta property="og:url" content="https://ibrahimmustafaopu.com/">
+  <!-- <meta property="og:image" content="https://ibrahimmustafaopu.com/assets/img/og.png"> -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ===== Fonts ========================================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap">
+
+  <!-- ===== Styles ========================================================
+       Load order matters — later files override earlier ones:
+         tokens     → colours, fonts, spacing (change values here)
+         base       → reset, typography primitives, reduced-motion
+         layout     → container, header, section rhythm, footer
+         components → hero, project cards, skills, now list
+         effects    → preloader, cursor, magnetic, line reveals (optional) -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/effects.css">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Marks the page as JavaScript-enabled before anything renders.
+       Everything in effects.css is gated on html.js, so with JS off the
+       site degrades to plain readable content instead of a blank screen
+       behind a preloader that never finishes. -->
+  <script>
+    document.documentElement.classList.add('js', 'is-loading');
+  </script>
+</head>
+
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ========================================================================
+     PRELOADER
+     Three stages named after how Whisper actually runs a file. Shown once
+     per browser session. Edit the wording here; edit the timing in
+     assets/js/preloader.js.
+     ===================================================================== -->
+<div class="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <p class="preloader__label">Building ibrahimmustafaopu.com</p>
+    <ul class="preloader__stages">
+      <li><span class="preloader__tick">✓</span> reading source</li>
+      <li><span class="preloader__tick">✓</span> parsing</li>
+      <li><span class="preloader__tick">✓</span> evaluating</li>
+    </ul>
+  </div>
+  <div class="preloader__count">00</div>
+  <div class="preloader__rule"></div>
+</div>
+
+<!-- Custom cursor. Removed automatically on touch devices. -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+
+<!-- ========================================================================
+     HEADER
+     ===================================================================== -->
+<header class="site-header">
+  <div class="site-header__bar">
+    <a class="site-header__mark" href="#top">ibrahim mustafa opu<span>.</span></a>
+
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#now">Now</a>
+    </nav>
+
+    <div class="site-header__progress" aria-hidden="true"></div>
+  </div>
+</header>
+
+
+<main id="main">
+<div id="top"></div>
+
+  <!-- ======================================================================
+       HERO
+       The source line is set in assets/js/hero.js, not here.
+       The <h1> below must say the same thing as that string. The keyword
+       is `whisper` — the print statement in your own language.
+
+       Note the <span class="line"><span>…</span></span> nesting — that's
+       what produces the mask reveal. Keep it when editing.
+       =================================================================== -->
+  <div class="wrap hero">
+
+    <p class="hero__location">Toronto, Canada &nbsp;·&nbsp; self-taught since 2020</p>
+
+    <div class="hero__runner">
+      <div class="hero__source" aria-hidden="true"></div>
+      <span class="hero__arrow" aria-hidden="true">→ output</span>
+      <h1 class="hero__output">
+        <span class="line"><span>I take things apart to</span></span>
+        <span class="line"><span><em>find out how they work.</em></span></span>
+      </h1>
+    </div>
+
+    <p class="hero__sub">
+      I'm Ibrahim — a self-taught programmer on a gap year in Toronto, heading into
+      computer science. I got curious about how Python runs, so I wrote my own language
+      to find out. That's more or less the pattern.
+    </p>
+
+    <div class="hero__socials">
+      <a href="https://github.com/ibrahim787898m" data-magnetic>GitHub</a>
+      <a href="https://www.linkedin.com/in/mibrahimOpu/" data-magnetic>LinkedIn</a>
+      <a href="https://x.com/mibrahimOpu" data-magnetic>X</a>
+      <!-- TODO: upload your PDF to assets/ and point this at it -->
+      <a href="assets/1resumeIBRm.pdf" target="_blank" rel="noopener" data-magnetic>Résumé</a>
+      <a href="mailto:ibrahimmustafa787898@gmail.com" data-magnetic>Email</a>
+    </div>
+
+  </div>
+
+
+  <!-- ======================================================================
+       ABOUT
+       =================================================================== -->
+  <section class="section section--ruled" id="about">
+    <div class="wrap">
+
+      <p class="eyebrow reveal">About</p>
+
+      <h2 class="section-title reveal">
+        <span class="line"><span>It started with a lesson</span></span>
+        <span class="line"><span>that went <em>badly</em>.</span></span>
+      </h2>
+
+      <div class="reveal">
+        <p class="lede">
+          After my SSC exams, before I started 11th grade, my father enrolled me in a
+          three-month ICT course. I didn't own a computer. The only device in our house was
+          a PlayStation. The first class was on web design — HTML, URLs, domains, hosting —
+          and every other student answered the teacher like they already knew all of it.
+          I'd always been a good student. I sat there realising I knew nothing, went home,
+          and cried.
+        </p>
+
+        <p class="lede">
+          My mother calmed me down. My father called my home tutor, who came over with his
+          laptop and showed me the basics properly — things I could watch happen on a screen
+          instead of just hearing about. That was enough to start. That night I borrowed my
+          mother's phone, found HTML tutorials on YouTube, and didn't sleep. By morning I'd
+          picked up some CSS as well and built a small website, entirely on a phone.
+        </p>
+
+        <blockquote class="pull">
+          I've never been able to trust that I understand something until I've
+          opened it up myself.
+        </blockquote>
+
+        <p class="lede">
+          I've never really stopped since. I was the kid who broke open a toy car to work out
+          how the wheels turned, and programming turned out to be the same thing with an undo
+          button. I came up through school in Bangladesh, spent a year in a maths degree I
+          hadn't chosen, and moved to Canada to study computer science properly.
+        </p>
+
+        <p class="lede">
+          Right now I'm in the gap year before university — working, studying, and building.
+          I finished <a href="https://cs50.harvard.edu/certificates/ce3505de-e7e4-450b-bde8-1f6bfac985db" target="_blank" rel="noopener">Harvard's CS50P</a>, I write mostly Python and JavaScript, and I'm working
+          through data structures and algorithms. Outside the editor I speak English, Bengali
+          and Hindi, and I solve a Rubik's cube in about thirty seconds.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================================
+       WORK
+
+       TO ADD A PROJECT: copy one <article class="project"> block below,
+       paste it where you want it in the order, and edit:
+         project__title — the name
+         project__kind  — what kind of thing it is
+         project__desc  — what it does and why you built it
+         project__snag  — the hard part. Don't skip this one.
+         project__links — Code first, then Live. If there's no live site,
+                          use the --none variant rather than a dead link.
+
+       =================================================================== -->
+  <section class="section" id="work">
+    <div class="wrap">
+
+      <p class="eyebrow reveal">Selected work</p>
+
+      <h2 class="section-title reveal">
+        <span class="line"><span>Things I built to</span></span>
+        <span class="line"><span><em>answer a question.</em></span></span>
+      </h2>
+
+      <div class="project-list">
+
+        <!-- Project: Whisper -->
+        <article class="project reveal">
+          <div class="project__head">
+            <h3 class="project__title">Whisper</h3>
+            <span class="project__kind">Programming language · on PyPI</span>
+          </div>
+          <p class="project__desc">
+            A programming language with conversational English syntax — you write
+            <code>whisper "hello"</code> and <code>when age greater than 18:</code> instead
+            of symbols. It also has story objects, so you can declare a character or an item
+            in a sentence and build interactive fiction and games out of them. I started it
+            after finding out CPython is written in C, which raised a question I couldn't let
+            go of: what actually happens between my source file and the output? Answering
+            that meant writing my own lexer, parser and interpreter.
+          </p>
+          <p class="project__desc">
+            It's installable with <code>pip install whisper-lang</code>, has a VS Code
+            extension for syntax highlighting, and documentation with a tutorial and
+            examples. Python 3.7+, no dependencies, MIT licensed.
+          </p>
+          <!-- Real Whisper, taken from your docs. Swap in a better example if
+               you have one — this should be the syntax you're proudest of. -->
+          <pre class="code-sample"><span class="c"># a greeting</span>
+<span class="k">ask</span> <span class="s">"What is your name?"</span> <span class="k">into</span> name
+<span class="k">whisper</span> <span class="s">"Hello, "</span> + name + <span class="s">"!"</span>
+
+<span class="k">let</span> age <span class="k">be</span> 25
+<span class="k">when</span> age <span class="k">greater than</span> 18:
+    <span class="k">whisper</span> <span class="s">"You are an adult!"</span>
+
+<span class="k">there is a</span> dragon <span class="k">with</span> health 150, attack 25, treasure 500</pre>
+
+          <p class="project__snag">
+            The hardest part was story objects — the feature that makes Whisper feel like
+            Whisper. <code>there is a dragon with health 150, attack 25</code> reads
+            beautifully, but underneath, attributes kept leaking between objects: I'd ask
+            for the player's health and get the dragon's. Every fix surfaced another one.
+            I came close to deleting the feature entirely. What fixed it was giving each
+            object its own namespace instead of resolving every name against one shared
+            table — obvious in hindsight, and the reason scope stopped being a word I'd
+            only read about.
+          </p>
+          <div class="tags">
+            <span>Python</span><span>Lexer</span><span>Parser</span><span>Interpreter</span><span>PyPI</span><span>VS Code extension</span>
+          </div>
+          <div class="project__links">
+            <a class="project__link" href="https://github.com/ibrahim787898m/whisper-lang" target="_blank" rel="noopener">
+              Code<span class="arrow">↗</span>
+            </a>
+            <a class="project__link" href="https://whisper.ibrahimmustafaopu.com/" target="_blank" rel="noopener">
+              Docs<span class="arrow">↗</span>
+            </a>
+            <a class="project__link" href="https://pypi.org/project/whisper-lang/" target="_blank" rel="noopener">
+              PyPI<span class="arrow">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project: Grocery Split -->
+        <article class="project reveal">
+          <div class="project__head">
+            <h3 class="project__title">Grocery Split</h3>
+            <span class="project__kind">Web app · in daily use</span>
+          </div>
+          <p class="project__desc">
+            A shared expense tracker for splitting grocery bills, built for a real problem —
+            a friend and I kept losing track of who owed what. Both of us can add an expense
+            and it updates on the other person's phone straight away. We still use it every
+            week, which has been the most useful thing about it: I keep finding bugs by
+            being a user.
+          </p>
+          <p class="project__snag">
+            The hard part wasn't the interface — it was the data. Two people adding expenses
+            from different phones means the database <em>is</em> the app, and I hadn't
+            thought about how to structure it, keep it in sync, or handle both of us writing
+            at once. Firebase gave me the real-time part for free, but designing the shape of
+            the data was the first problem I couldn't solve by reading documentation faster,
+            and it's the thing I most want to learn properly.
+          </p>
+          <div class="tags">
+            <span>JavaScript</span><span>HTML</span><span>CSS</span><span>Firebase</span>
+          </div>
+          <div class="project__links">
+            <a class="project__link" href="https://github.com/ibrahim787898m/grocery-split" target="_blank" rel="noopener">
+              Code<span class="arrow">↗</span>
+            </a>
+            <a class="project__link" href="https://grocery-split.ibrahimmustafaopu.com/" target="_blank" rel="noopener">
+              Live<span class="arrow">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project: Online Diary -->
+        <article class="project reveal">
+          <div class="project__head">
+            <h3 class="project__title">Online Diary</h3>
+            <span class="project__kind">Web app</span>
+          </div>
+          <p class="project__desc">
+            A private journalling app with entry creation, sorting, organisation and password
+            authentication. My first project with a real backend behind it, and the one that
+            taught me the difference between "it works on my machine" and "it works when
+            someone else logs in".
+          </p>
+          <div class="tags">
+            <span>JavaScript</span><span>Firebase</span><span>Auth</span><span>CSS</span>
+          </div>
+          <div class="project__links">
+            <a class="project__link" href="https://github.com/ibrahim787898m/diary-webapp" target="_blank" rel="noopener">
+              Code<span class="arrow">↗</span>
+            </a>
+            <a class="project__link" href="https://ibrahim787898m.github.io/diary-webapp/" target="_blank" rel="noopener">
+              Live<span class="arrow">↗</span>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <p class="section-more reveal">
+        <a href="archive.html">Everything else I've built<span class="arrow">↗</span></a>
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================================
+       SKILLS
+       Three tiers, and the tiers are the point — they tell a reader what
+       you can be interviewed on. Move items between tiers as you learn.
+       =================================================================== -->
+  <section class="section" id="skills">
+    <div class="wrap">
+
+      <p class="eyebrow reveal">Skills</p>
+
+      <h2 class="section-title reveal">
+        <span class="line"><span>What I can actually</span></span>
+        <span class="line"><span><em>be asked about.</em></span></span>
+      </h2>
+
+      <dl class="reveal">
+
+        <div class="tier">
+          <dt class="tier__label">Confident</dt>
+          <dd class="tier__items">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            <span>Python</span><span>Git</span><span>Responsive layout</span>
+          </dd>
+        </div>
+
+        <div class="tier">
+          <dt class="tier__label">Working with</dt>
+          <dd class="tier__items">
+            <span>Firebase</span><span>C</span><span>C++</span>
+            <span>Data structures</span><span>Algorithms</span><span>spaCy / NLP</span>
+          </dd>
+        </div>
+
+        <div class="tier tier--aspirational">
+          <dt class="tier__label">Next up</dt>
+          <dd class="tier__items">
+            <span>React</span><span>TypeScript</span><span>SQL</span><span>Testing</span>
+          </dd>
+        </div>
+
+      </dl>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================================
+       NOW
+       This is the section that goes stale fastest. Check it every few months.
+       =================================================================== -->
+  <section class="section" id="now">
+    <div class="wrap">
+
+      <p class="eyebrow reveal">Now</p>
+
+      <h2 class="section-title reveal">
+        <span class="line"><span>Where I am, <em>currently.</em></span></span>
+      </h2>
+
+      <ul class="now-list reveal">
+        <li>
+          <span class="now-list__when">2026</span>
+          <span>Gap year in Toronto. Working, saving, and looking for the right next job.</span>
+        </li>
+        <li>
+          <span class="now-list__when">Learning</span>
+          <span>Data structures and algorithms, and Harvard's CS50x. Working to a roadmap that
+            covers DSA, C and C++, and discrete math before university.</span>
+        </li>
+        <li>
+          <span class="now-list__when">Shipped</span>
+          <span>Whisper 1.0 — published on PyPI, with a VS Code extension and full documentation.</span>
+        </li>
+        <li>
+          <span class="now-list__when">Open to</span>
+          <span>Junior and entry-level development work, and conversations with anyone building
+            something interesting.</span>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ========================================================================
+     FOOTER
+     ===================================================================== -->
+<footer class="site-footer">
+  <div class="wrap">
+
+    <p class="eyebrow reveal" style="margin-bottom:1.75rem">Get in touch</p>
+
+    <a class="big-mail reveal" href="mailto:ibrahimmustafa787898@gmail.com"
+       data-magnetic data-magnetic-strength="0.16">
+      ibrahimmustafa787898@gmail.com
+    </a>
+
+    <div class="site-footer__colophon">
+      <span>Designed and built by Ibrahim Mustafa Opu</span>
+      <span>Newsreader &amp; IBM Plex · 2026</span>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ===== Scripts =========================================================
+     `defer` means they run after the HTML is parsed, in order, without
+     blocking rendering. Each file is independent.
+
+     The last three are the effects layer — delete these three lines and
+     the effects.css link above, and the site still works completely. -->
+<script src="assets/js/hero.js" defer></script>
+<script src="assets/js/reveal.js" defer></script>
+<script src="assets/js/nav.js" defer></script>
+
+<script src="assets/js/preloader.js" defer></script>
+<script src="assets/js/cursor.js" defer></script>
+<script src="assets/js/magnetic.js" defer></script>
+
+</body>
+</html>

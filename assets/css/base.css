@@ -1,0 +1,160 @@
+/* ==========================================================================
+   base.css — reset, document defaults, typography primitives
+   Nothing here is tied to a specific section of the page.
+   ========================================================================== */
+
+/* --- Reset --------------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+img { max-width: 100%; display: block; }
+
+
+/* --- Document ------------------------------------------------------------ */
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: clamp(1rem, 0.97rem + 0.15vw, 1.075rem);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Faint warm glow at the top of the page so the dark isn't a flat slab.
+   Fixed + pointer-events:none so it never interferes with content. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 80% at 50% -10%, rgba(216, 163, 63, .05), transparent 60%);
+}
+
+
+/* --- Links & selection --------------------------------------------------- */
+a { color: inherit; }
+
+/* Inline links inside body copy — underlined so they're findable, gold on
+   hover. Nav, project and social links opt out with their own styles. */
+.lede a,
+.pull a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-dim);
+  padding-bottom: 1px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.lede a:hover { color: var(--gold); border-color: var(--gold); }
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* Keyboard focus must always be visible. Do not remove this. */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Skip link for keyboard and screen-reader users */
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: .8rem;
+  padding: .6rem 1rem;
+}
+.skip:focus { left: .5rem; top: .5rem; }
+
+
+/* --- Typography primitives -----------------------------------------------
+   Used across multiple sections, so they live here rather than in
+   components.css. */
+
+/* Small uppercase mono label with a rule running off to the right */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted-dim);
+}
+.eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* Section heading. Italic spans inside are gold — that is the pattern. */
+.section-title {
+  margin: 1.5rem 0 2rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 1.4rem + 2vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -.015em;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+p + p { margin-top: 1.1rem; }
+
+.lede { color: var(--muted); }
+
+/* Pull-quote: serif italic with a gold rule down the left */
+.pull {
+  margin: 2rem 0;
+  padding-left: 1.4rem;
+  border-left: 2px solid var(--gold-dim);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem);
+  line-height: 1.4;
+  color: var(--text);
+}
+
+
+/* --- Reduced motion ------------------------------------------------------
+   Respect the OS-level setting. Everything still renders, it just doesn't
+   move. Loaded last in the cascade for this reason — see index.html. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .reveal,
+  .hero__output,
+  .hero__sub,
+  .hero__socials,
+  .hero__arrow {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

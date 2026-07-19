@@ -1,0 +1,40 @@
+/* ==========================================================================
+   tokens.css — design tokens
+   Every colour, typeface and spacing value lives here and nowhere else.
+   Change a value here and it updates across the whole site.
+   ========================================================================== */
+
+:root {
+
+  /* --- Colour -------------------------------------------------------------
+     Warm ink rather than pure black. The gold is the only accent —
+     if you add a second accent colour, the design stops working. */
+  --ink:        #131110;  /* page background */
+  --surface:    #1A1715;  /* raised panels, project card hover */
+  --line:       #2B2724;  /* visible hairline borders */
+  --line-soft:  #221F1C;  /* quieter dividers between list items */
+  --text:       #ECE5DA;  /* body text */
+  --muted:      #9B9384;  /* secondary text */
+  --muted-dim:  #6E6759;  /* labels, captions, least important text */
+  --gold:       #D8A33F;  /* accent — use sparingly */
+  --gold-dim:   #8A6A2C;  /* accent, quieter */
+
+  /* --- Type ---------------------------------------------------------------
+     Newsreader  : display serif, headings only
+     IBM Plex Sans : body copy
+     IBM Plex Mono : labels, tags, years, code */
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans:  'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --mono:  'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* --- Layout -------------------------------------------------------------
+     --pad     : horizontal page gutter, scales with viewport
+     --measure : max content width. Keep this narrow; long lines are hard
+                 to read and this site is mostly prose. */
+  --pad:     clamp(1.25rem, 5vw, 3rem);
+  --measure: 44rem;
+
+  /* --- Motion ------------------------------------------------------------- */
+  --ease:  cubic-bezier(.2, .7, .3, 1);
+  --speed: .7s;
+}

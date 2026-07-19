@@ -1,0 +1,283 @@
+/* ==========================================================================
+   effects.css — the motion layer
+   Preloader, custom cursor, line-mask reveals, magnetic links.
+
+   This whole file is optional. Remove its <link> in index.html and the
+   three effect scripts, and the site falls back to the calm version with
+   nothing broken. That's deliberate — effects should be removable.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Preloader
+   A short "compile" sequence: lexing → parsing → evaluating, then a wipe.
+   Stages come from how Whisper actually runs a file, so the loading screen
+   says something true rather than just spinning.
+
+   Shown once per browser session. Skipped entirely for reduced motion.
+   Driven by assets/js/preloader.js.
+   ========================================================================== */
+
+.preloader { display: none; }
+
+html.js .preloader {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--ink);
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 1s cubic-bezier(.76, 0, .24, 1);
+}
+
+/* Lifts away when js adds .is-done */
+.preloader.is-done { transform: translateY(-100%); }
+
+/* Locks scrolling while the preloader is up. Set by the inline script in
+   index.html, removed by preloader.js. */
+html.is-loading, html.is-loading body { overflow: hidden; }
+
+.preloader__inner {
+  max-width: var(--measure);
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+.preloader__label {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted-dim);
+  margin-bottom: 1.75rem;
+}
+
+.preloader__stages {
+  list-style: none;
+  font-family: var(--mono);
+  font-size: clamp(.8rem, .75rem + .25vw, .92rem);
+}
+
+.preloader__stages li {
+  display: flex;
+  align-items: baseline;
+  gap: .75rem;
+  padding-block: .35rem;
+  color: var(--muted-dim);
+  opacity: .35;
+  transition: opacity .35s ease, color .35s ease;
+}
+
+/* Currently running */
+.preloader__stages li.is-active {
+  opacity: 1;
+  color: var(--text);
+}
+
+/* Finished */
+.preloader__stages li.is-done {
+  opacity: 1;
+  color: var(--muted);
+}
+
+.preloader__tick {
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.preloader__stages li.is-done .preloader__tick { opacity: 1; }
+
+/* Big count in the corner */
+.preloader__count {
+  position: absolute;
+  right: var(--pad);
+  bottom: calc(var(--pad) + .5rem);
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 1.5rem + 5vw, 5rem);
+  line-height: 1;
+  letter-spacing: -.03em;
+  color: var(--surface);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hairline that fills across the bottom of the screen */
+.preloader__rule {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width .2s linear;
+}
+
+
+/* ==========================================================================
+   Custom cursor
+   A gold dot that tracks exactly, and a ring that lags behind and expands
+   over links. Desktop pointing devices only — never on touch, and never
+   when the user prefers reduced motion.
+
+   Driven by assets/js/cursor.js.
+   ========================================================================== */
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  pointer-events: none;
+  border-radius: 50%;
+  will-change: transform;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  background: var(--gold);
+}
+
+.cursor-ring {
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border: 1px solid var(--gold-dim);
+  transition: opacity .3s ease, width .25s var(--ease), height .25s var(--ease),
+              margin .25s var(--ease), border-color .25s ease;
+}
+
+/* js adds .is-live once the pointer has moved */
+.cursor-dot.is-live,
+.cursor-ring.is-live { opacity: 1; }
+
+/* Over a link */
+.cursor-ring.is-hovering {
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border-color: var(--gold);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* Hide the native cursor only where the custom one is actually running */
+  html.has-custom-cursor,
+  html.has-custom-cursor * { cursor: none !important; }
+}
+
+/* Never on touch devices */
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring { display: none; }
+}
+
+
+/* ==========================================================================
+   Line-mask reveal
+   Text slides up from behind a mask rather than fading in. More work than
+   opacity, and it reads as considerably more crafted.
+
+   Markup:
+     <span class="line"><span>Your text</span></span>
+   ========================================================================== */
+
+.line {
+  display: block;
+  overflow: hidden;
+}
+
+.line > span {
+  display: block;
+  transition: transform .9s var(--ease);
+}
+
+/* Only hide the text if JavaScript is there to bring it back */
+html.js .line > span { transform: translateY(105%); }
+
+/* Staggers each line inside the same heading */
+.line:nth-child(2) > span { transition-delay: .08s; }
+.line:nth-child(3) > span { transition-delay: .16s; }
+
+.reveal.is-visible .line > span,
+.hero.has-run .line > span { transform: none; }
+
+/* Safety net: if a reveal somehow never fires, show the text after 3s
+   rather than leaving a blank heading on the page. */
+@keyframes line-failsafe { to { transform: none; } }
+html.js .line > span {
+  animation: line-failsafe 0s linear 3s forwards;
+}
+
+
+/* ==========================================================================
+   Ambient hero glow
+   The warm light at the top of the page drifts toward the pointer.
+   cursor.js writes --mx / --my as percentages; the fallback keeps it
+   centred if the script never runs.
+   ========================================================================== */
+
+body::before {
+  background: radial-gradient(
+    120% 80% at var(--mx, 50%) var(--my, -10%),
+    rgba(216, 163, 63, .06),
+    transparent 60%
+  );
+  transition: background .6s ease-out;
+}
+
+
+/* ==========================================================================
+   Project card — hover detail
+   A gold rule draws across the top of the card on hover or when anything
+   inside it receives keyboard focus.
+   ========================================================================== */
+
+.project::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 1px;
+  width: 100%;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .5s var(--ease);
+}
+.project:hover::after,
+.project:focus-within::after { transform: scaleX(1); }
+
+
+/* ==========================================================================
+   Magnetic links
+   Elements with data-magnetic drift a few pixels toward the cursor.
+   Driven by assets/js/magnetic.js.
+   ========================================================================== */
+
+[data-magnetic] {
+  display: inline-block;
+  will-change: transform;
+  transition: transform .45s var(--ease);
+}
+[data-magnetic].is-pulled { transition: transform .12s ease-out; }
+
+
+/* ==========================================================================
+   Reduced motion
+   Everything above is decoration. Switch it all off.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader, html.js .preloader { display: none; }
+  html.is-loading, html.is-loading body { overflow: auto; }
+  .cursor-dot,
+  .cursor-ring { display: none; }
+  .line > span, html.js .line > span { transform: none !important; animation: none !important; }
+  body::before { transition: none; }
+}

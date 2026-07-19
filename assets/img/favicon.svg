@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#131110"/>
+  <!-- Same letter with a top entry serif — closer to a true Newsreader "i",
+       but busier at small sizes. -->
+  <g fill="#D8A33F">
+    <circle cx="16" cy="7.8" r="2.8"/>
+    <rect x="11.6" y="13.2" width="6.3" height="2.5" rx="0.6"/>
+    <rect x="14.1" y="13.2" width="3.8" height="9.8"/>
+    <rect x="10.2" y="22.2" width="11.6" height="2.8" rx="0.7"/>
+  </g>
+</svg>

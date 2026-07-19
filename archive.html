@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Archive — Ibrahim Mustafa Opu</title>
+  <meta name="description" content="Everything else — clones, coursework, older portfolios and practice projects by Ibrahim Mustafa Opu.">
+  <link rel="canonical" href="https://ibrahimmustafaopu.com/archive.html">
+  <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap">
+
+  <!-- Same stylesheets as the homepage, same order. -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/effects.css">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <script>
+    document.documentElement.classList.add('js', 'is-loading');
+  </script>
+</head>
+
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <p class="preloader__label">Building ibrahimmustafaopu.com</p>
+    <ul class="preloader__stages">
+      <li><span class="preloader__tick">✓</span> reading source</li>
+      <li><span class="preloader__tick">✓</span> parsing</li>
+      <li><span class="preloader__tick">✓</span> evaluating</li>
+    </ul>
+  </div>
+  <div class="preloader__count">00</div>
+  <div class="preloader__rule"></div>
+</div>
+
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+
+<header class="site-header">
+  <div class="site-header__bar">
+    <a class="site-header__mark" href="index.html">ibrahim mustafa opu<span>.</span></a>
+
+    <nav class="site-nav" aria-label="Sections">
+      <a href="index.html#about">About</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#now">Now</a>
+    </nav>
+
+    <div class="site-header__progress" aria-hidden="true"></div>
+  </div>
+</header>
+
+
+<main id="main">
+
+  <section class="section" style="padding-top:9rem">
+    <div class="wrap">
+
+      <p class="eyebrow reveal">Archive</p>
+
+      <h1 class="section-title reveal">
+        <span class="line"><span>Everything else</span></span>
+        <span class="line"><span><em>I've built.</em></span></span>
+      </h1>
+
+      <p class="lede reveal" style="max-width:34rem">
+        Practice projects, coursework, clones and older versions of this site. Most of it
+        exists because I was learning something, not because anyone needed it — which is
+        the point. The three projects on the
+        <a href="index.html#work">home page</a> are the ones I'd want to talk about.
+      </p>
+
+
+      <!-- ==================================================================
+           TO ADD AN ITEM: copy one <div class="archive-item"> block and edit
+           the year, name, description and links.
+
+           =============================================================== -->
+
+      <!-- ============ Projects ============ -->
+      <div class="archive-group reveal">
+        <p class="archive-group__title">Projects</p>
+
+        <div class="archive-item">
+          <span class="archive-item__year">2025</span>
+          <div>
+            <h2 class="archive-item__name">CodeKen</h2>
+            <p class="archive-item__desc">
+              A coding-education site, started to teach the things I'd had to piece together
+              on my own. Paused while I focus on studying — the structure is there, the
+              content isn't.
+            </p>
+            <div class="archive-item__links">
+              <a href="https://github.com/ibrahim787898m/codeken" target="_blank" rel="noopener">Code ↗</a>
+              <span>Paused</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <span class="archive-item__year">2025</span>
+          <div>
+            <h2 class="archive-item__name">NLP toolkit with spaCy</h2>
+            <p class="archive-item__desc">
+              A command-line tool that runs eight NLP operations on any text you paste in —
+              tokenisation, lemmatisation, POS tagging, named entity recognition, dependency
+              parsing, stop-word removal and sentence detection — with the results printed as
+              readable tables. My first look at how much machinery sits behind something that
+              reads like magic.
+            </p>
+            <div class="archive-item__links">
+              <!-- TODO: repo URL -->
+              <a href="#" target="_blank" rel="noopener">Code ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <span class="archive-item__year">2024</span>
+          <div>
+            <h2 class="archive-item__name">YouTube clone</h2>
+            <p class="archive-item__desc">
+              A front-end rebuild of the YouTube interface — responsive layout, video grid,
+              interactive components. Built to practise CSS layout against a design I
+              couldn't argue with.
+            </p>
+            <div class="archive-item__links">
+              <a href="https://github.com/ibrahim787898m/frontend-clones/tree/master/youtube-clone" target="_blank" rel="noopener">Code ↗</a>
+              <!-- TODO: live URL, or swap for <span>Not live</span> -->
+              <a href="#" target="_blank" rel="noopener">Live ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <span class="archive-item__year">2024</span>
+          <div>
+            <h2 class="archive-item__name">Facebook clone</h2>
+            <p class="archive-item__desc">
+              Same idea, different interface. Front-end only, HTML, CSS and JavaScript.
+            </p>
+            <div class="archive-item__links">
+              <a href="https://github.com/ibrahim787898m/frontend-clones/tree/master/facebook-clone" target="_blank" rel="noopener">Code ↗</a>
+              <!-- TODO: live URL, or swap for <span>Not live</span> -->
+              <a href="#" target="_blank" rel="noopener">Live ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ============ Coursework ============ -->
+      <div class="archive-group reveal">
+        <p class="archive-group__title">Coursework &amp; practice</p>
+
+        <div class="archive-item">
+          <span class="archive-item__year">2025</span>
+          <div>
+            <h2 class="archive-item__name">CS50P</h2>
+            <p class="archive-item__desc">
+              Harvard's Introduction to Programming with Python — nine problem sets and a
+              final project. The repository has all of it, including two versions of the
+              final project.
+            </p>
+            <div class="archive-item__links">
+              <a href="https://github.com/ibrahim787898m/CS50P" target="_blank" rel="noopener">Code ↗</a>
+              <a href="https://cs50.harvard.edu/certificates/ce3505de-e7e4-450b-bde8-1f6bfac985db" target="_blank" rel="noopener">Certificate ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <span class="archive-item__year">Ongoing</span>
+          <div>
+            <h2 class="archive-item__name">Data structures &amp; algorithms</h2>
+            <p class="archive-item__desc">
+              LeetCode solutions and notes, worked through alongside a roadmap covering
+              complexity analysis, arrays, trees and graphs. Ongoing rather than finished.
+            </p>
+            <div class="archive-item__links">
+              <a href="https://github.com/ibrahim787898m/leetcode-solutions" target="_blank" rel="noopener">Code ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ============ This site ============ -->
+      <div class="archive-group reveal">
+        <p class="archive-group__title">This site, previously</p>
+
+        <div class="archive-item">
+          <span class="archive-item__year">2025</span>
+          <div>
+            <h2 class="archive-item__name">Portfolio v2</h2>
+            <p class="archive-item__desc">
+              My second portfolio, built while I was learning front-end properly.
+              Retired when I built this one.
+            </p>
+            <div class="archive-item__links">
+              <a href="https://github.com/ibrahim787898m/portfolio-v2" target="_blank" rel="noopener">Code ↗</a>
+              <span>Retired</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="archive-item">
+          <span class="archive-item__year">2024</span>
+          <div>
+            <h2 class="archive-item__name">Portfolio v1</h2>
+            <p class="archive-item__desc">
+              The first one. Worth keeping for the same reason you keep early drafts.
+            </p>
+            <div class="archive-item__links">
+              <a href="https://github.com/ibrahim787898m/portfolio-v1" target="_blank" rel="noopener">Code ↗</a>
+              <span>Retired</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="wrap">
+
+    <p class="eyebrow reveal" style="margin-bottom:1.75rem">Get in touch</p>
+
+    <a class="big-mail reveal" href="mailto:ibrahimmustafa787898@gmail.com"
+       data-magnetic data-magnetic-strength="0.16">
+      ibrahimmustafa787898@gmail.com
+    </a>
+
+    <div class="site-footer__colophon">
+      <span><a href="index.html">← Back to home</a></span>
+      <span>Newsreader &amp; IBM Plex · 2026</span>
+    </div>
+
+  </div>
+</footer>
+
+<script src="assets/js/hero.js" defer></script>
+<script src="assets/js/reveal.js" defer></script>
+<script src="assets/js/nav.js" defer></script>
+
+<script src="assets/js/preloader.js" defer></script>
+<script src="assets/js/cursor.js" defer></script>
+<script src="assets/js/magnetic.js" defer></script>
+
+</body>
+</html>
