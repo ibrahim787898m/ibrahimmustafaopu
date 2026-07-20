@@ -385,7 +385,7 @@
   display: inline-block;
   font-family: var(--serif);
   font-weight: 300;
-  font-size: clamp(1.6rem, 1.1rem + 2.6vw, 2.7rem);
+  font-size: clamp(1.4rem, 1rem + 2.2vw, 2.1rem);
   letter-spacing: -.02em;
   text-decoration: none;
   word-break: break-word;
