@@ -43,8 +43,8 @@
   font-size: clamp(.78rem, .72rem + .3vw, .9rem);
   letter-spacing: -.01em;
   color: var(--muted);
-  white-space: nowrap;
-  overflow: hidden;
+  white-space: normal;
+  overflow: break-word;
 }
 .hero__source .kw  { color: var(--gold); }   /* language keyword */
 .hero__source .str { color: var(--text); }   /* string literal */
