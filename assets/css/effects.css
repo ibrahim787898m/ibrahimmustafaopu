@@ -281,3 +281,175 @@ body::before {
   .line > span, html.js .line > span { transform: none !important; animation: none !important; }
   body::before { transition: none; }
 }
+
+
+/* ==========================================================================
+   Console  (append to assets/css/effects.css)
+   A small interactive terminal that opens over the page. Thematically it
+   belongs here — the site is built around a language you type commands into.
+
+   Fully removable: delete this block, the console.js script tag, and the
+   trigger button markup, and nothing else breaks.
+   ========================================================================== */
+
+/* --- Trigger button, bottom-right --------------------------------------- */
+.console-trigger {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .6rem .9rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: .74rem;
+  letter-spacing: .06em;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease, transform .2s var(--ease);
+}
+.console-trigger:hover {
+  color: var(--gold);
+  border-color: var(--gold-dim);
+  transform: translateY(-2px);
+}
+.console-trigger .blink {
+  color: var(--gold);
+  animation: console-caret 1.1s steps(1) infinite;
+}
+@keyframes console-caret { 50% { opacity: 0; } }
+
+/* Hide the trigger while the console is open */
+body.console-open .console-trigger { opacity: 0; pointer-events: none; }
+
+
+/* --- Overlay ------------------------------------------------------------- */
+.console {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(10, 9, 8, .55);
+  backdrop-filter: blur(4px);
+}
+.console.is-open { display: flex; }
+
+
+/* --- Window -------------------------------------------------------------- */
+.console__window {
+  width: 100%;
+  max-width: 46rem;
+  height: min(70vh, 34rem);
+  display: flex;
+  flex-direction: column;
+  background: #14110F;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,.5);
+  animation: console-in .25s var(--ease);
+}
+@keyframes console-in {
+  from { opacity: 0; transform: translateY(12px) scale(.99); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Title bar */
+.console__bar {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .6rem .85rem;
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--surface);
+}
+.console__dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--line);
+}
+.console__dot--gold { background: var(--gold-dim); }
+.console__title {
+  margin-left: .4rem;
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  color: var(--muted-dim);
+}
+.console__close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--muted-dim);
+  font-family: var(--mono);
+  font-size: .9rem;
+  cursor: pointer;
+  padding: .1rem .4rem;
+  border-radius: 2px;
+  transition: color .2s ease;
+}
+.console__close:hover { color: var(--gold); }
+
+/* Scrollable output */
+.console__output {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.1rem;
+  font-family: var(--mono);
+  font-size: clamp(.78rem, .74rem + .2vw, .86rem);
+  line-height: 1.7;
+  color: var(--text);
+}
+.console__output::-webkit-scrollbar { width: 8px; }
+.console__output::-webkit-scrollbar-thumb {
+  background: var(--line); border-radius: 4px;
+}
+
+/* A printed line */
+.console__line { white-space: pre-wrap; word-break: break-word; }
+.console__line .prompt { color: var(--gold); }
+.console__line .cmd    { color: var(--text); }
+.console__line .muted  { color: var(--muted-dim); }
+.console__line .key    { color: var(--gold); }
+.console__line a       { color: var(--gold); text-underline-offset: 2px; }
+.console__line--err .key { color: #C97A6D; }
+
+.console__block { margin: .15rem 0 .6rem; }
+
+/* Input row */
+.console__form {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .7rem 1.1rem;
+  border-top: 1px solid var(--line-soft);
+  background: #100E0C;
+}
+.console__prompt {
+  font-family: var(--mono);
+  font-size: .85rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.console__input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: clamp(.78rem, .74rem + .2vw, .86rem);
+  caret-color: var(--gold);
+}
+.console__input::placeholder { color: var(--muted-dim); }
+
+@media (prefers-reduced-motion: reduce) {
+  .console__window { animation: none; }
+  .console-trigger { transition: none; }
+}
