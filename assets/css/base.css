@@ -45,14 +45,16 @@ a { color: inherit; }
 /* Inline links inside body copy — underlined so they're findable, gold on
    hover. Nav, project and social links opt out with their own styles. */
 .lede a,
-.pull a {
+.pull a,
+.now-list a {
   color: var(--text);
   text-decoration: none;
   border-bottom: 1px solid var(--gold-dim);
   padding-bottom: 1px;
   transition: color .2s ease, border-color .2s ease;
 }
-.lede a:hover { color: var(--gold); border-color: var(--gold); }
+.lede a:hover,
+.now-list a:hover { color: var(--gold); border-color: var(--gold); }
 
 ::selection {
   background: var(--gold);

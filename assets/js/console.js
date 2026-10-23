@@ -46,8 +46,9 @@
     ],
 
     education: [
-      ['2022–…',   'Murari Chand College — Mathematics (did not complete; moved to Canada)'],
-      ['2022',     'Higher Secondary Certificate — Sylhet Government College'],
+      ['2020',      'Secondary School Certificate — Starlight Academy'],
+      ['2022',      'Higher Secondary Certificate — Sylhet Government College'],
+      ['2022–2023', 'Murari Chand College — Mathematics (did not complete; moved to Canada)'],
       ['2025',     'CS50P — Harvard (certified)'],
       ['ongoing',  'CS50x — Harvard']
     ],
