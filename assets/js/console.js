@@ -25,11 +25,12 @@
      Keep it true and keep it in sync with the rest of the site. */
   var DATA = {
     about: [
-      'Ibrahim Mustafa Opu — self-taught programmer in Toronto,',
-      'on a gap year before starting a computer science degree.',
+      'Ibrahim Mustafa Opu — I learn by trying things I don\'t',
+      'know how to do yet.',
       '',
-      'I understand things by building them. I got curious about',
-      'how Python runs, so I wrote my own language to find out.'
+      'Right now that means preparing for a computer science',
+      'degree. I got curious about how Python runs, so I wrote',
+      'my own language to find out.'
     ],
 
     projects: [
