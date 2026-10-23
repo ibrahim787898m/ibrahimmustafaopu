@@ -40,9 +40,9 @@
     ],
 
     skills: [
-      ['confident',    'HTML, CSS, JavaScript, Python, Git'],
-      ['working with', 'Firebase, C, C++, data structures & algorithms, spaCy'],
-      ['learning',     'React, TypeScript, SQL']
+      ['confident',    'HTML, CSS, JavaScript, Python, Git, responsive layout'],
+      ['working with', 'Firebase, pytest, data structures & algorithms, C, C++, discrete math'],
+      ['next up',      'React, TypeScript, SQL']
     ],
 
     education: [
